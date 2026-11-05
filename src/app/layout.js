@@ -4,6 +4,7 @@ import "./globals.css";
 import { ToastContainer } from "react-toastify";
 import Navbar from "@/components/navbar/Navbar";
 import { ThemeProvider } from "@/components/theme/ThemeContext";
+import Footer from "@/components/footer/Footer";
 
 const interSans = Inter({
   variable: "--font-inter-sans",
@@ -22,6 +23,7 @@ export default function RootLayout({ children }) {
         <ThemeProvider>
           <Navbar />
           <main>{children}</main>
+          <Footer />
           <ToastContainer />
         </ThemeProvider>
       </body>
