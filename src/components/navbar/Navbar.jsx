@@ -14,12 +14,13 @@ import {
 import Image from "next/image";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
-import { redirect} from "next/navigation";
-
+import { redirect } from "next/navigation";
+import { useTheme } from "../theme/ThemeContext";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
-    const [user, setUser] = React.useState(null);
-
+  const [user, setUser] = React.useState(null);
+  const { theme, toggle } = useTheme();
 
   const handleLogout = async () => {
     try {
@@ -111,8 +112,8 @@ const Navbar = () => {
         {/* Right: Theme Toggle & User Profile / Auth */}
         <div className="flex items-center gap-3">
           {/* Dark / Light Mode Toggle Button */}
-          {/* <button
-            // onClick={toggle}
+          <button
+            onClick={toggle}
             aria-label="Toggle dark/light mode"
             className="w-9 h-9 rounded-full flex items-center justify-center text-foreground hover:bg-secondary border border-transparent hover:border-border transition-all cursor-pointer"
           >
@@ -121,9 +122,9 @@ const Navbar = () => {
             ) : (
               <FaMoon className="text-slate-700 text-sm" />
             )}
-          </button> */}
+          </button>
 
-            {user ? (
+          {user ? (
             <div className="dropdown dropdown-end">
               <div
                 tabIndex={0}

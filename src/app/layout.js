@@ -3,6 +3,7 @@ import "./globals.css";
 
 import { ToastContainer } from "react-toastify";
 import Navbar from "@/components/navbar/Navbar";
+import { ThemeProvider } from "@/components/theme/ThemeContext";
 
 const interSans = Inter({
   variable: "--font-inter-sans",
@@ -18,9 +19,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${interSans.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
+        <ThemeProvider>
           <Navbar />
           <main>{children}</main>
           <ToastContainer />
+        </ThemeProvider>
       </body>
     </html>
   );
