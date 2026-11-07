@@ -1,13 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { FiBookOpen, FiMail, FiPhone, FiMapPin } from "react-icons/fi";
 import { FaFacebookF, FaLinkedinIn, FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
 function Footer() {
-  const [user, setUser] = React.useState(null);
+  const year = new Date().getFullYear();
+  const [user, setUser] = useState(null);
 
   return (
     <footer className="bg-background text-foreground border-t border-border mt-auto">
@@ -245,7 +246,7 @@ function Footer() {
 
         {/* Bottom Bar */}
         <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground text-center sm:text-left">
-          <p>© {new Date().getFullYear()} StudyNook. All rights reserved.</p>
+          <p>© {year ?? "2026"} StudyNook. All rights reserved.</p>
 
           <p>Built for students, scholars, and library patrons.</p>
         </div>
