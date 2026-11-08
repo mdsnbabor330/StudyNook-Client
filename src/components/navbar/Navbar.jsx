@@ -11,16 +11,20 @@ import {
   HiOutlineFolder,
   HiOutlineBookmark,
 } from "react-icons/hi2";
+import { authClient } from "@/lib/auth-client";
 import Image from "next/image";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useTheme } from "../theme/ThemeContext";
 import { toast } from "react-toastify";
 
+
 const Navbar = () => {
-  const [user, setUser] = React.useState(null);
+ const { data: session, isPending } = authClient.useSession();
+  const user = session?.user;
   const { theme, toggle } = useTheme();
+  const router = useRouter();
 
   const handleLogout = async () => {
     try {
@@ -28,7 +32,8 @@ const Navbar = () => {
         fetchOptions: {
           onSuccess: () => {
             toast.success("Logged out successfully");
-            redirect("/login");
+            router.push("/signin");
+            router.refresh();
           },
         },
       });
@@ -46,7 +51,7 @@ const Navbar = () => {
         All Rooms
       </Navlink>
       {user && (
-        <>
+        <> 
           <Navlink href="/add-room" icon={HiOutlinePlusCircle}>
             Add Room
           </Navlink>
@@ -124,7 +129,11 @@ const Navbar = () => {
             )}
           </button>
 
-          {user ? (
+          {isPending ? (
+            <span className="text-xs text-muted-foreground animate-pulse">
+              ...
+            </span>
+          ) : user ? (
             <div className="dropdown dropdown-end">
               <div
                 tabIndex={0}
@@ -158,7 +167,7 @@ const Navbar = () => {
                 tabIndex={-1}
                 className="menu menu-sm dropdown-content bg-card text-card-foreground border border-border rounded-2xl z-50 mt-3 w-56 p-2.5 shadow-xl gap-1.5"
               >
-                <li className="px-3 py-1.5 border-b border-border text-xs text-muted-foreground">
+                <li className=" py-1.5 border-b border-border text-xs text-muted-foreground">
                   Signed in as <br />
                   <span className="font-semibold text-foreground truncate block">
                     {user.email}
@@ -214,7 +223,7 @@ const Navbar = () => {
           ) : (
             <div className="flex items-center gap-2">
               <Link
-                href="/login"
+                href="/signin"
                 className="text-foreground font-semibold px-3.5 py-1.5 text-xs sm:text-sm rounded-full hover:bg-secondary transition-colors"
               >
                 Sign In

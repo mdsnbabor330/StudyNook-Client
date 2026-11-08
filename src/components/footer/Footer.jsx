@@ -5,10 +5,12 @@ import Link from "next/link";
 import { FiBookOpen, FiMail, FiPhone, FiMapPin } from "react-icons/fi";
 import { FaFacebookF, FaLinkedinIn, FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { authClient } from "@/lib/auth-client";
 
 function Footer() {
   const year = new Date().getFullYear();
-  const [user, setUser] = useState(null);
+  const { data: session, isPending } = authClient.useSession();
+  const user = session?.user;
 
   return (
     <footer className="bg-background text-foreground border-t border-border mt-auto">
