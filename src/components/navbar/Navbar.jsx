@@ -229,7 +229,7 @@ const Navbar = () => {
                 Sign In
               </Link>
               <Link
-                href="/signup"
+                href="/register"
                 className="text-white dark:text-slate-900 bg-slate-950 dark:bg-white hover:opacity-90 px-4 py-1.5 text-xs sm:text-sm rounded-full font-semibold shadow-xs transition-all"
               >
                 Register
