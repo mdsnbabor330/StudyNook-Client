@@ -98,6 +98,12 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content bg-card text-card-foreground rounded-2xl z-50 mt-3 w-56 p-3 shadow-xl border border-border gap-1.5"
             >
               {navLinks}
+              <Link
+                href="/register"
+                className="text-white dark:text-slate-900 bg-slate-950 dark:bg-white hover:opacity-90 px-4 py-1.5 text-xs sm:text-sm rounded-full font-semibold shadow-xs transition-all"
+              >
+                Register
+              </Link>
             </ul>
           </div>
 
@@ -151,10 +157,10 @@ const Navbar = () => {
                       className="object-cover w-full h-full"
                     />
                   ) : (
-                    (user.name?.[0] || "U").toUpperCase()
+                    (user.name?.[0]).toUpperCase()
                   )}
                 </div>
-                <span className="text-xs sm:text-sm font-semibold text-foreground max-w-25 truncate">
+                <span className="text-xs sm:text-sm font-semibold text-foreground max-w-25 truncate hidden sm:block">
                   {user.name}
                 </span>
                 <IoIosArrowDown
@@ -165,7 +171,7 @@ const Navbar = () => {
 
               <ul
                 tabIndex={-1}
-                className="menu menu-sm dropdown-content bg-card text-card-foreground border border-border rounded-2xl z-50 mt-3 w-56 p-2.5 shadow-xl gap-1.5"
+                className="menu menu-sm dropdown-content bg-card text-card-foreground border border-border rounded-2xl z-50 mt-3 w-60 p-2.5 shadow-xl gap-1.5"
               >
                 <li className=" py-1.5 border-b border-border text-xs text-muted-foreground">
                   Signed in as <br />
@@ -212,7 +218,7 @@ const Navbar = () => {
 
                 <li className="pt-1 border-t border-border mt-1">
                   <button
-                    className="w-full bg-destructive/10 text-red-600 hover:bg-destructive hover:text-white font-medium rounded-xl text-xs py-2 text-center transition-colors cursor-pointer"
+                    className="w-full bg-destructive/10 text-red-700 hover:bg-destructive hover:text-red-500 hover:font-bold font-medium rounded-xl text-xs py-2 text-center transition-colors cursor-pointer"
                     onClick={handleLogout}
                   >
                     Log Out
@@ -224,13 +230,13 @@ const Navbar = () => {
             <div className="flex items-center gap-2">
               <Link
                 href="/signin"
-                className="text-foreground font-semibold px-3.5 py-1.5 text-xs sm:text-sm rounded-full hover:bg-secondary transition-colors"
+                className="text-foreground font-semibold px-3.5 py-1.5 text-xs sm:text-sm rounded-full hover:bg-secondary transition-colors "
               >
                 Sign In
               </Link>
               <Link
                 href="/register"
-                className="text-white dark:text-slate-900 bg-slate-950 dark:bg-white hover:opacity-90 px-4 py-1.5 text-xs sm:text-sm rounded-full font-semibold shadow-xs transition-all"
+                className="text-white dark:text-slate-900 bg-slate-950 dark:bg-white hover:opacity-90 px-4 py-1.5 text-xs sm:text-sm rounded-full font-semibold shadow-xs transition-all hidden sm:inline-flex items-center gap-1.5"
               >
                 Register
               </Link>
