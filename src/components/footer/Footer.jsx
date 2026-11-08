@@ -8,8 +8,8 @@ import { FaXTwitter } from "react-icons/fa6";
 import { authClient } from "@/lib/auth-client";
 
 function Footer() {
-  const year = new Date().getFullYear();
-  const { data: session, isPending } = authClient.useSession();
+  const year = 2026;
+  const { data: session} = authClient.useSession();
   const user = session?.user;
 
   return (
