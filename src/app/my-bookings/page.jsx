@@ -11,7 +11,7 @@ export const metadata = {
 };
 
 const MyBookings = async () => {
-  let user = null;
+  let user = [];
   try {
     const session = await auth.api.getSession({
       headers: await headers(),

@@ -32,7 +32,7 @@ const DeleteRoom = ({ _id, room }) => {
       }
 
       toast.success("Room deleted successfully");
-      router.push("/rooms");
+      router.push("/my-listings");
       router.refresh();
     } catch (err) {
       toast.error(err.message || "Failed to delete room");
