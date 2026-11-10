@@ -1,24 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
-import { FaMapMarkerAlt, FaRegEdit, FaTrashAlt } from "react-icons/fa";
+import { FaMapMarkerAlt } from "react-icons/fa";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { IoBookmarkOutline, IoBookmarks } from "react-icons/io5";
 import { MdOutlinePeopleAlt } from "react-icons/md";
-
 import { authClient } from "@/lib/auth-client";
-import { AlertDialog, Button } from "@heroui/react";
-import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
 import BookingModal from "../modal/BookingModal";
 import Image from "next/image";
 
 const RoomDetailsCard = ({ room }) => {
-  const router = useRouter();
   const { data: session } = authClient.useSession();
   const user = session?.user;
-  const [isDeleting, setIsDeleting] = useState(false);
 
   if (!room) {
     return (
@@ -45,37 +38,8 @@ const RoomDetailsCard = ({ room }) => {
     capacity,
     hourlyRate,
     amenities = [],
-    userId,
     bookingCount = 0,
   } = room;
-
-  const isOwner = Boolean(user?.id && userId && user.id === userId);
-
-  const handleDeleteRoom = async () => {
-    try {
-      setIsDeleting(true);
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/${_id}`,
-        {
-          method: "DELETE",
-          next: { revalidate: 60 },
-        },
-      );
-
-      if (!res.ok) {
-        const errorData = await res.json();
-        throw new Error(errorData.message || "Failed to delete room");
-      }
-
-      toast.success("Room deleted successfully");
-      router.push("/rooms");
-      router.refresh();
-    } catch (err) {
-      toast.error(err.message || "Failed to delete room");
-    } finally {
-      setIsDeleting(false);
-    }
-  };
 
   return (
     <div className="max-w-300 mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col lg:flex-row gap-8 items-start">
@@ -99,58 +63,6 @@ const RoomDetailsCard = ({ room }) => {
             <h1 className="font-serif text-3xl sm:text-4xl font-bold text-foreground">
               {roomName}
             </h1>
-
-            {isOwner && (
-              <div className="flex items-center gap-2">
-                <Link
-                  href={`/my-listings/edit/${_id}`}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-border bg-secondary hover:bg-secondary/80 text-foreground text-xs font-semibold transition-colors"
-                >
-                  <FaRegEdit size={13} />
-                  <span>Edit Room</span>
-                </Link>
-
-                <AlertDialog>
-                  <Button className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-destructive/10 text-destructive hover:bg-destructive hover:text-white text-xs font-semibold transition-colors cursor-pointer">
-                    <FaTrashAlt size={12} />
-                    <span>Delete</span>
-                  </Button>
-                  <AlertDialog.Backdrop>
-                    <AlertDialog.Container>
-                      <AlertDialog.Dialog className="sm:max-w-md">
-                        <AlertDialog.CloseTrigger />
-                        <AlertDialog.Header>
-                          <AlertDialog.Icon status="danger" />
-                          <AlertDialog.Heading>
-                            Delete this listing?
-                          </AlertDialog.Heading>
-                        </AlertDialog.Header>
-                        <AlertDialog.Body>
-                          <p className="text-sm text-muted-foreground">
-                            Are you sure you want to delete{" "}
-                            <strong>{roomName}</strong>? All associated bookings
-                            will be cleared. This action cannot be undone.
-                          </p>
-                        </AlertDialog.Body>
-                        <AlertDialog.Footer>
-                          <Button slot="close" variant="tertiary">
-                            Cancel
-                          </Button>
-                          <Button
-                            onClick={handleDeleteRoom}
-                            isDisabled={isDeleting}
-                            slot="close"
-                            variant="danger"
-                          >
-                            {isDeleting ? "Deleting..." : "Confirm Delete"}
-                          </Button>
-                        </AlertDialog.Footer>
-                      </AlertDialog.Dialog>
-                    </AlertDialog.Container>
-                  </AlertDialog.Backdrop>
-                </AlertDialog>
-              </div>
-            )}
           </div>
 
           <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-muted-foreground">

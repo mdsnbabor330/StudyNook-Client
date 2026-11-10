@@ -9,22 +9,24 @@ const RoomDetails = async ({ params }) => {
   const { id } = await params;
   let room = [];
   const session = await auth.api.getSession({
-      headers: await headers(),
-    });
-   const user = session?.user;
-
+    headers: await headers(),
+  });
+  const user = session?.user;
 
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/${id}`,{
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/${id}`,
+      {
         cache: "no-store",
-    });
+      },
+    );
     if (res.ok) {
       room = await res.json();
     }
   } catch (error) {
     console.error("Error fetching room:", error);
   }
-  console.log("room",room.userId);
+  console.log("room", room.userId);
 
   return (
     <div className="pt-20 pb-16 min-h-screen">
@@ -38,20 +40,20 @@ const RoomDetails = async ({ params }) => {
             <span>Back to All Rooms</span>
           </Link>
 
-          {user.id===room?.userId && (
+          {user.id === room?.userId && (
             <div className="flex items-center gap-7">
-                <Link
-              href={`/rooms/${id}/edit`}
-              className="inline-flex items-center gap-2 text-sky-600 text-xs sm:text-sm font-semibold transition-all hover:border-b-2 hover:border-sky-600 py-1"
-            >
-              <span>Edit Room</span>
-            </Link>
-            <Link
-              href={`/rooms/${id}/delete`}
-              className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-red-500 transition-all hover:border-b-2 hover:border-red-500 py-1"
-            >
-              <span>Delete Room</span>
-            </Link>
+              <Link
+                href={`/edit-room/${id}`}
+                className="inline-flex items-center gap-2 text-sky-600 text-xs sm:text-sm font-semibold transition-all hover:border-b-2 hover:border-sky-600 py-1"
+              >
+                <span>Edit Room</span>
+              </Link>
+              <Link
+                href={`/rooms/${id}/delete`}
+                className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-red-500 transition-all hover:border-b-2 hover:border-red-500 py-1"
+              >
+                <span>Delete Room</span>
+              </Link>
             </div>
           )}
         </div>
