@@ -5,6 +5,7 @@ import React from "react";
 import { FaClock, FaRegCalendarAlt } from "react-icons/fa";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { MdOutlineCancel } from "react-icons/md";
+import DeleteBooking from "../modal/DeleteBooking";
 
 const BookingCard = ({ bookingRoom }) => {
   const {
@@ -103,8 +104,10 @@ const BookingCard = ({ bookingRoom }) => {
       {canCancel && (
         <div className="shrink-0 self-end md:self-center">
           <CancelBooking bookingRoom={bookingRoom} />
+          
         </div>
       )}
+      <DeleteBooking _id={_id} bookingRoom={bookingRoom} />
     </div>
   );
 };

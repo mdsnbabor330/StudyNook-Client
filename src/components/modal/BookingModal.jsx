@@ -159,7 +159,7 @@ const BookingModal = ({ room }) => {
       }
 
       toast.success("Room booked successfully!");
-      router.push("/rooms");
+      router.push("/my-bookings");
     } catch (error) {
       toast.error(error.message || "Something went wrong.");
     } finally {
