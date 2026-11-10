@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 
-const DeleteModal = ({ _id, room }) => {
+const DeleteRoom = ({ _id, room }) => {
 
     const roomName = room?.roomName;
 
@@ -85,4 +85,4 @@ const DeleteModal = ({ _id, room }) => {
     );
 };
 
-export default DeleteModal;
+export default DeleteRoom;

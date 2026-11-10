@@ -1,4 +1,4 @@
-import DeleteModal from "@/components/modal/DeleteModal";
+import DeleteRoom from "@/components/modal/DeleteRoom";
 import RoomDetailsCard from "@/components/UI/RoomDetailsCard";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
@@ -51,7 +51,7 @@ const RoomDetails = async ({ params }) => {
                 <FaEdit size={12} />
                 <span>Edit Room</span>
               </Link>
-              <DeleteModal _id={id} room={room} />
+              <DeleteRoom _id={id} room={room} />
             </div>
           )}
         </div>
