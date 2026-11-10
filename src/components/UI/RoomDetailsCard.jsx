@@ -30,7 +30,6 @@ const RoomDetailsCard = ({ room }) => {
   }
 
   const {
-    _id,
     roomName,
     description,
     image,
