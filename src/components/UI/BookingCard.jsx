@@ -101,13 +101,10 @@ const BookingCard = ({ bookingRoom }) => {
         </div>
       </div>
 
-      {canCancel && (
-        <div className="shrink-0 self-end md:self-center">
-          <CancelBooking bookingRoom={bookingRoom} />
-          
-        </div>
-      )}
-      <DeleteBooking _id={_id} bookingRoom={bookingRoom} />
+      <div className="flex items-center gap-2 self-end md:self-center shrink-0">
+        {canCancel && <CancelBooking bookingRoom={bookingRoom} />}
+        <DeleteBooking _id={_id} bookingRoom={bookingRoom} />
+      </div>
     </div>
   );
 };

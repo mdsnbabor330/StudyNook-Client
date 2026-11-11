@@ -15,7 +15,7 @@ const RoomDetailsCard = ({ room }) => {
 
   if (!room) {
     return (
-      <div className="max-w-300 mx-auto text-center py-20">
+      <div className="max-w-7xl mx-auto text-center py-20 px-4">
         <p className="text-lg text-muted-foreground">
           Room details could not be found.
         </p>
@@ -41,7 +41,7 @@ const RoomDetailsCard = ({ room }) => {
   } = room;
 
   return (
-    <div className="max-w-300 mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col lg:flex-row gap-8 items-start">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col lg:flex-row gap-8 items-start">
       {/* Left Column: Media & Room Information */}
       <div className="w-full lg:w-2/3 space-y-6">
         {/* Room Image */}

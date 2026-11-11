@@ -68,7 +68,7 @@ export default function RoomFilter({
   );
 
   return (
-    <div className="max-w-300 bg-card border border-border rounded-2xl p-4 sm:p-6 shadow-sm space-y-4">
+    <div className="w-full bg-card border border-border rounded-2xl p-4 sm:p-6 shadow-sm space-y-4">
       {/* Top Search & Quick Actions Bar */}
       <div className="flex flex-col md:flex-row gap-3 items-stretch md:items-center justify-between">
         <div className="relative flex-1">
@@ -96,7 +96,7 @@ export default function RoomFilter({
           <select
             value={filters.floor ? filters.floor : "All Floors"}
             onChange={handleFloorChange}
-            className="px-3.5 py-2.5 rounded-xl border border-border bg-background text-xs sm:text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
+            className="flex-1 sm:flex-none px-3.5 py-2.5 rounded-xl border border-border bg-background text-xs sm:text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
           >
             {floors.map((floor) => (
               <option key={floor} value={floor}>
@@ -108,7 +108,7 @@ export default function RoomFilter({
           <select
             value={filters.sort || "newest"}
             onChange={handleSortChange}
-            className="px-3.5 py-2.5 rounded-xl border border-border bg-background text-xs sm:text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
+            className="flex-1 sm:flex-none px-3.5 py-2.5 rounded-xl border border-border bg-background text-xs sm:text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
           >
             <option value="newest">Sort: Newest</option>
             <option value="price-low">Price: Low to High</option>
@@ -118,7 +118,7 @@ export default function RoomFilter({
 
           <button
             onClick={() => setShowAdvanced(!showAdvanced)}
-            className={`flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl border border-border text-xs sm:text-sm font-medium transition-colors cursor-pointer ${
+            className={`flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl border border-border text-xs sm:text-sm font-medium transition-colors cursor-pointer shrink-0 ${
               showAdvanced || filters.maxRate < 50
                 ? "bg-primary text-primary-foreground"
                 : "bg-secondary text-foreground hover:bg-secondary/80"
@@ -131,7 +131,7 @@ export default function RoomFilter({
           {hasActiveFilters && (
             <button
               onClick={onReset}
-              className="px-3 py-2 text-xs font-semibold text-destructive hover:underline cursor-pointer"
+              className="px-2.5 py-2 text-xs font-semibold text-destructive hover:underline cursor-pointer shrink-0"
             >
               Reset
             </button>

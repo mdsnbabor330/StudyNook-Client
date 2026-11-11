@@ -43,7 +43,7 @@ const ProfilePage = async () => {
 
   if (!user) {
     return (
-      <div className="w-full max-w-200 mx-auto px-4 py-24 text-center space-y-4">
+      <div className="w-full max-w-md mx-auto px-4 py-24 text-center space-y-4">
         <h1 className="font-serif text-3xl font-bold text-foreground">
           Sign In to View Profile
         </h1>
@@ -61,7 +61,7 @@ const ProfilePage = async () => {
   }
 
   return (
-    <div className="w-full max-w-200 mx-auto px-4 sm:px-6 lg:px-8 py-10 pt-24 sm:pt-28 space-y-8">
+    <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 pt-24 sm:pt-28 space-y-8">
       {/* Profile Header Banner */}
       <div className="bg-card border border-border rounded-2xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row items-center sm:items-start gap-6">
         <div className="w-24 h-24 rounded-2xl overflow-hidden bg-secondary border-2 border-border shrink-0 flex items-center justify-center shadow-xs">

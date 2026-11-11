@@ -33,7 +33,7 @@ const RoomDetails = async ({ params }) => {
   return (
     <div className="pt-20 pb-16 min-h-screen">
       <div className="border-b border-border bg-secondary/50 py-3.5 mb-6">
-        <div className="max-w-300 mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link
             href="/rooms"
             className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-muted-foreground hover:text-foreground transition-all"

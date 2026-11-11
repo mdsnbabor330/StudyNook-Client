@@ -10,6 +10,7 @@ import {
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import Loading from "@/app/loading";
 
 import { HiOutlineArrowLeft } from "react-icons/hi";
 import { IoIosArrowDown } from "react-icons/io";
@@ -76,6 +77,10 @@ export default function EditRoomPage() {
     };
     fetchRoom();
   }, [roomId]);
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   if (!room) {
     return (
@@ -146,7 +151,7 @@ export default function EditRoomPage() {
       </Link>
 
       <div className="mb-6">
-        <p className="text-xs sm:text-sm font-semibold tracking-wider text-[#2D6A4F] uppercase mb-1">
+        <p className="text-xs sm:text-sm font-semibold tracking-wider text-accent uppercase mb-1">
           EDIT LISTING
         </p>
         <h1 className="font-serif text-3xl sm:text-4xl font-bold text-foreground">

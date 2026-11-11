@@ -8,8 +8,8 @@ export const metadata = {
 
 export default function NotFound() {
   return (
-    <div className="min-h-[90vh] flex items-center justify-center px-4 py-16">
-      <div className="max-w-300 w-full bg-card border border-border rounded-2xl p-8 sm:p-10 text-center shadow-xl space-y-6">
+    <div className="min-h-[85vh] flex items-center justify-center px-4 py-16">
+      <div className="max-w-xl w-full bg-card border border-border rounded-2xl p-6 sm:p-10 text-center shadow-xl space-y-6">
         <div className="w-16 h-16 rounded-2xl bg-primary/10 text-primary mx-auto flex items-center justify-center text-3xl">
           <FiBookOpen />
         </div>

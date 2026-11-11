@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Suspense } from "react";
 
-
-const Navlink = ({ href, icon: Icon, children, className = "" }) => {
-  let pathname = usePathname();
+const NavlinkInner = ({ href, icon: Icon, children, className = "" }) => {
+  const pathname = usePathname();
   const isActive = pathname === href;
 
   return (
@@ -26,5 +26,21 @@ const Navlink = ({ href, icon: Icon, children, className = "" }) => {
     </Link>
   );
 };
+
+const Navlink = (props) => (
+  <Suspense
+    fallback={
+      <Link
+        href={props.href}
+        className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium text-muted-foreground ${props.className ?? ""}`}
+      >
+        {props.icon && <props.icon className="text-base shrink-0 opacity-80" />}
+        <span>{props.children}</span>
+      </Link>
+    }
+  >
+    <NavlinkInner {...props} />
+  </Suspense>
+);
 
 export default Navlink;

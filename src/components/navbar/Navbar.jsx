@@ -98,17 +98,27 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content bg-card text-card-foreground rounded-2xl z-50 mt-3 w-56 p-3 shadow-xl border border-border gap-1.5"
             >
               {navLinks}
-              <Link
-                href="/register"
-                className="text-white dark:text-slate-900 bg-slate-950 dark:bg-white hover:opacity-90 px-4 py-1.5 text-xs sm:text-sm rounded-full font-semibold shadow-xs transition-all"
-              >
-                Register
-              </Link>
+              {!user && (
+                <div className="pt-2 border-t border-border flex flex-col gap-1.5 mt-1">
+                  <Link
+                    href="/signin"
+                    className="text-foreground font-semibold px-3 py-1.5 text-xs rounded-xl hover:bg-secondary transition-colors"
+                  >
+                    Sign In
+                  </Link>
+                  <Link
+                    href="/register"
+                    className="text-primary-foreground bg-primary hover:opacity-90 px-3 py-1.5 text-xs rounded-xl font-semibold text-center shadow-xs transition-all"
+                  >
+                    Register
+                  </Link>
+                </div>
+              )}
             </ul>
           </div>
 
           <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-8 h-8 rounded-lg bg-slate-900 text-white dark:bg-white dark:text-slate-900 flex items-center justify-center shadow-xs transition-transform group-hover:scale-105">
+            <div className="w-8 h-8 rounded-lg bg-primary text-primary-foreground flex items-center justify-center shadow-xs transition-transform group-hover:scale-105">
               <FiBookOpen size={16} />
             </div>
             <span className="font-serif text-2xl font-bold tracking-tight text-foreground">
@@ -131,7 +141,7 @@ const Navbar = () => {
             {theme === "dark" ? (
               <FaSun className="text-amber-400 text-base" />
             ) : (
-              <FaMoon className="text-slate-700 text-sm" />
+              <FaMoon className="text-foreground text-sm" />
             )}
           </button>
 
@@ -147,7 +157,7 @@ const Navbar = () => {
                 className="flex items-center gap-2 pl-1 pr-2.5 py-1 rounded-full bg-secondary/80 hover:bg-secondary border border-border cursor-pointer transition-all shadow-2xs"
               >
                 {/* Avatar with image or clean initial letter badge */}
-                <div className="w-6 h-6 rounded-full bg-slate-300 dark:bg-slate-700 text-slate-800 dark:text-slate-100 flex items-center justify-center text-xs font-bold overflow-hidden shrink-0">
+                <div className="w-6 h-6 rounded-full bg-secondary text-secondary-foreground flex items-center justify-center text-xs font-bold overflow-hidden shrink-0">
                   {user.image ? (
                     <Image
                       src={user.image}
@@ -218,7 +228,7 @@ const Navbar = () => {
 
                 <li className="pt-1 border-t border-border mt-1">
                   <button
-                    className="w-full bg-destructive/10 text-red-700 hover:bg-destructive hover:text-red-500 hover:font-bold font-medium rounded-xl text-xs py-2 text-center transition-colors cursor-pointer"
+                    className="w-full bg-destructive/10 text-destructive hover:bg-destructive hover:text-destructive-foreground font-medium rounded-xl text-xs py-2 text-center transition-colors cursor-pointer"
                     onClick={handleLogout}
                   >
                     Log Out
@@ -236,7 +246,7 @@ const Navbar = () => {
               </Link>
               <Link
                 href="/register"
-                className="text-white dark:text-slate-900 bg-slate-950 dark:bg-white hover:opacity-90 px-4 py-1.5 text-xs sm:text-sm rounded-full font-semibold shadow-xs transition-all hidden sm:inline-flex items-center gap-1.5"
+                className="text-primary-foreground bg-primary hover:opacity-90 px-4 py-1.5 text-xs sm:text-sm rounded-full font-semibold shadow-xs transition-all hidden sm:inline-flex items-center gap-1.5"
               >
                 Register
               </Link>

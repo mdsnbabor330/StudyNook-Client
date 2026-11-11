@@ -176,7 +176,7 @@ const BookingModal = ({ room }) => {
 
       <Modal.Backdrop>
         <Modal.Container placement="auto">
-          <Modal.Dialog className="sm:max-w-md bg-card text-card-foreground border border-border shadow-2xl rounded-2xl">
+          <Modal.Dialog className="w-full max-w-[calc(100vw-2rem)] sm:max-w-md max-h-[92vh] overflow-y-auto bg-card text-card-foreground border border-border shadow-2xl rounded-2xl p-4 sm:p-6">
             <Modal.CloseTrigger />
 
             <Modal.Header>
@@ -202,26 +202,26 @@ const BookingModal = ({ room }) => {
                   onChange={setValue}
                   isRequired
                 >
-                  <Label className="text-xs sm:text-sm font-medium text-gray-800 mb-1 block">
+                  <Label className="text-xs sm:text-sm font-medium text-foreground mb-1 block">
                     Select Date
                   </Label>
 
                   <DateField.Group
                     fullWidth
-                    className="border border-border bg-background text-gray-900 rounded-xl p-2.5 text-sm flex items-center"
+                    className="border border-border bg-background text-foreground rounded-xl p-2.5 text-sm flex items-center"
                   >
                     <DateField.Input className="flex-1">
                       {(segment) => (
                         <DateField.Segment
                           segment={segment}
-                          className="text-gray-900 data-[placeholder]:text-gray-400 outline-none"
+                          className="text-foreground data-[placeholder]:text-muted-foreground outline-none"
                         />
                       )}
                     </DateField.Input>
 
                     <DateField.Suffix>
-                      <DatePicker.Trigger className="text-gray-700 hover:text-gray-950 p-1">
-                        <DatePicker.TriggerIndicator className="text-gray-700" />
+                      <DatePicker.Trigger className="text-muted-foreground hover:text-foreground p-1">
+                        <DatePicker.TriggerIndicator className="text-foreground" />
                       </DatePicker.Trigger>
                     </DateField.Suffix>
                   </DateField.Group>

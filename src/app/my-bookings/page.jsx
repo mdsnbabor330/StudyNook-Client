@@ -1,6 +1,7 @@
 import { auth } from "@/lib/auth";
 import BookingCard from "@/components/UI/BookingCard";
 import { headers } from "next/headers";
+import { connection } from "next/server";
 import Link from "next/link";
 import React from "react";
 import { IoBookmarksOutline } from "react-icons/io5";
@@ -11,6 +12,7 @@ export const metadata = {
 };
 
 const MyBookings = async () => {
+  await connection();
   let user = [];
   try {
     const session = await auth.api.getSession({
@@ -43,7 +45,7 @@ const MyBookings = async () => {
 
   if (!user) {
     return (
-      <div className="w-full max-w-300 mx-auto px-4 py-20 pt-28 text-center space-y-6">
+      <div className="w-full max-w-7xl mx-auto px-4 py-20 pt-28 text-center space-y-6">
         <div className="w-16 h-16 rounded-2xl bg-secondary text-primary mx-auto flex items-center justify-center text-2xl">
           <IoBookmarksOutline />
         </div>
@@ -67,7 +69,7 @@ const MyBookings = async () => {
   }
 
   return (
-    <div className="w-full max-w-300 mx-auto px-4 sm:px-6 lg:px-8 py-10 pt-24 sm:pt-28">
+    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 pt-24 sm:pt-28">
       {/* Header */}
       <div className="mb-8">
         <p className="text-xs sm:text-sm font-semibold tracking-wider text-accent uppercase">
@@ -89,7 +91,7 @@ const MyBookings = async () => {
           ))}
         </div>
       ) : (
-        <div className="bg-card border border-border shadow-sm p-8 sm:p-12 rounded-2xl flex flex-col items-center justify-center text-center max-w-300 mx-auto space-y-4">
+        <div className="bg-card border border-border shadow-sm p-8 sm:p-12 rounded-2xl flex flex-col items-center justify-center text-center max-w-xl mx-auto space-y-4">
           <div className="w-14 h-14 rounded-full bg-secondary flex items-center justify-center text-primary text-2xl">
             <IoBookmarksOutline />
           </div>

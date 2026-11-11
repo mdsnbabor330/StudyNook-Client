@@ -99,7 +99,7 @@ const AddRoom = () => {
   return (
     <div className="w-full max-w-3xl mx-auto px-4 py-8 sm:py-12 pt-24 sm:pt-28">
       <div className="mb-6">
-        <p className="text-xs sm:text-sm font-semibold tracking-wider text-[#2D6A4F] uppercase mb-1">
+        <p className="text-xs sm:text-sm font-semibold tracking-wider text-accent uppercase mb-1">
           NEW LISTING
         </p>
         <h1 className="font-serif text-3xl sm:text-4xl font-bold text-primary">

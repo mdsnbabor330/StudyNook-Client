@@ -2,6 +2,8 @@
 @import "@heroui/styles";
 @plugin "daisyui";
 
+
+
 /* Theme */
 @theme inline {
   --color-background: var(--background);
@@ -14,33 +16,16 @@
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
   --color-ring: var(--ring);
 }
 
-/* Dark Theme */
-:root {
-  --background: #090a0f;
-  --foreground: #f8fafc;
-
-  --card: #141824;
-  --card-foreground: #f8fafc;
-
-  --primary: #f8fafc;
-  --primary-foreground: #090a0f;
-
-  --secondary: #0f1219;
-  --secondary-foreground: #94a3b8;
-
-  --muted: #0f1219;
-  --muted-foreground: #64748b;
-
-  --border: rgba(248, 250, 252, 0.15);
-  --ring: #f8fafc;
-}
-
-/* light theme */
-
+/* Light Theme (Default) */
+:root,
 [data-theme="light"],
 .light {
   --background: #f8fafc;
@@ -58,8 +43,42 @@
   --muted: #f1f5f9;
   --muted-foreground: #94a3b8;
 
+  --accent: #2d6a4f;
+  --accent-foreground: #ffffff;
+
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+
   --border: rgba(15, 23, 42, 0.12);
   --ring: #0f172a;
+}
+
+/* Dark Theme */
+[data-theme="dark"],
+.dark {
+  --background: #090a0f;
+  --foreground: #f8fafc;
+
+  --card: #141824;
+  --card-foreground: #f8fafc;
+
+  --primary: #f8fafc;
+  --primary-foreground: #090a0f;
+
+  --secondary: #0f1219;
+  --secondary-foreground: #94a3b8;
+
+  --muted: #0f1219;
+  --muted-foreground: #64748b;
+
+  --accent: #52b788;
+  --accent-foreground: #090a0f;
+
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+
+  --border: rgba(248, 250, 252, 0.15);
+  --ring: #f8fafc;
 }
 
 body {

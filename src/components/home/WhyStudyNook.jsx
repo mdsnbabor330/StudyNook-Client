@@ -6,7 +6,7 @@ const WhyStudyNook = () => {
     {
       id: 1,
       icon: FiShield,
-      iconBg: "bg-[#EBF3F5]",
+      iconBg: "bg-primary/10",
       iconColor: "text-primary",
       title: "Verified Spaces",
       description:
@@ -15,8 +15,8 @@ const WhyStudyNook = () => {
     {
       id: 2,
       icon: FiZap,
-      iconBg: "bg-[#E8F4EC]",
-      iconColor: "text-[#2D6A4F]",
+      iconBg: "bg-accent/15",
+      iconColor: "text-accent",
       title: "Instant Confirmation",
       description:
         "No waiting for approval. Book in seconds and get your confirmation before you close the tab.",
@@ -24,8 +24,8 @@ const WhyStudyNook = () => {
     {
       id: 3,
       icon: FiStar,
-      iconBg: "bg-[#FAF3E5]",
-      iconColor: "text-[#B07D3C]",
+      iconBg: "bg-amber-500/15",
+      iconColor: "text-amber-500",
       title: "Curated Selection",
       description:
         "We partner only with institutions that maintain high standards of comfort and connectivity.",
@@ -33,8 +33,8 @@ const WhyStudyNook = () => {
     {
       id: 4,
       icon: FiUsers,
-      iconBg: "bg-[#F0ECF8]",
-      iconColor: "text-[#6C5CE7]",
+      iconBg: "bg-indigo-500/15",
+      iconColor: "text-indigo-400 dark:text-indigo-300",
       title: "Solo or Group",
       description:
         "From private carrels for one to seminar halls for twenty — the right space for every study need.",
@@ -45,7 +45,7 @@ const WhyStudyNook = () => {
     <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Header */}
       <div className="text-center max-w-2xl mx-auto space-y-3">
-        <p className="text-xs sm:text-sm font-semibold tracking-wider text-[#2D6A4F] uppercase">
+        <p className="text-xs sm:text-sm font-semibold tracking-wider text-accent uppercase">
           OUR PROMISE
         </p>
         <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">

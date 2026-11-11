@@ -21,7 +21,7 @@ let rooms = [];
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
       <div className="text-center max-w-2xl mx-auto space-y-3">
-        <p className="text-xs sm:text-sm font-semibold tracking-wider text-[#2D6A4F] uppercase">
+        <p className="text-xs sm:text-sm font-semibold tracking-wider text-accent uppercase">
           OUR SELECTION
         </p>
         <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">

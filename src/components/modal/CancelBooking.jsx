@@ -45,7 +45,7 @@ const CancelBooking = ({ bookingRoom, onCancel }) => {
       </Button>
       <AlertDialog.Backdrop>
         <AlertDialog.Container>
-          <AlertDialog.Dialog className="sm:max-w-md bg-card text-card-foreground border border-border rounded-2xl shadow-2xl">
+          <AlertDialog.Dialog className="w-full max-w-[calc(100vw-2rem)] sm:max-w-md bg-card text-card-foreground border border-border rounded-2xl shadow-2xl p-4 sm:p-6">
             <AlertDialog.CloseTrigger />
             <AlertDialog.Header>
               <AlertDialog.Icon status="danger" />
