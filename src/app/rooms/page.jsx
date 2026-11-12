@@ -2,6 +2,8 @@ import RoomsClient from "@/components/roomClient/RoomsClient";
 import { connection } from "next/server";
 
 
+export const instant = false;
+
 export const metadata = {
   title: "StudyNook - Available Rooms",
   description:

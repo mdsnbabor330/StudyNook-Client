@@ -6,6 +6,8 @@ import Link from "next/link";
 import React from "react";
 import { FiPlus, FiFolder } from "react-icons/fi";
 
+export const instant = false;
+
 export const metadata = {
   title: "StudyNook - My Listings",
   description: "Manage your listed study rooms and track booking activity.",

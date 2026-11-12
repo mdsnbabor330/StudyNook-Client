@@ -7,6 +7,8 @@ import { FaUserCircle, FaCheckCircle } from "react-icons/fa";
 import { FiBookOpen, FiBookmark, FiArrowRight } from "react-icons/fi";
 import { connection } from "next/server";
 
+export const instant = false;
+
 export const metadata = {
   title: "StudyNook - User Profile",
   description:

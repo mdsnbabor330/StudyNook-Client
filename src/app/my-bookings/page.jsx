@@ -6,6 +6,8 @@ import Link from "next/link";
 import React from "react";
 import { IoBookmarksOutline } from "react-icons/io5";
 
+export const instant = false;
+
 export const metadata = {
   title: "StudyNook - My Bookings",
   description: "View and manage your active and past study room reservations.",

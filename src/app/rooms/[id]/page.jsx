@@ -8,6 +8,8 @@ import { FaEdit } from "react-icons/fa";
 import { HiOutlineArrowLeft } from "react-icons/hi";
 import { connection } from "next/server";
 
+export const instant = false;
+
 const RoomDetails = async ({ params }) => {
   await connection();
   const { id } = await params;
