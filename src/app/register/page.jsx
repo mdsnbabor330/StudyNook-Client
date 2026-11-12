@@ -21,7 +21,7 @@ import { toast } from "react-toastify";
 const Register = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-
+  
   useEffect(() => {
     document.title = "StudyNook - Register";
   }, []);

@@ -13,6 +13,10 @@ export const metadata = {
 
 const MyListings = async () => {
   await connection();
+  const tokenData = await auth.api.getToken({
+    headers: await headers(),
+  });
+  console.log(tokenData);
   let user = [];
   try {
     const session = await auth.api.getSession({
@@ -27,9 +31,14 @@ const MyListings = async () => {
 
   let listingRooms = [];
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/my-listing`, {
-      cache: "no-store",
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/my-listing`,
+      {
+        headers: {
+          Authorization: `Bearer ${tokenData?.token}`,
+        },
+      },
+    );
     if (res.ok) {
       listingRooms = await res.json();
     }
@@ -52,7 +61,8 @@ const MyListings = async () => {
             Sign In to View Listings
           </h1>
           <p className="text-sm text-muted-foreground mt-2">
-            Please log in to your StudyNook account to manage and view your room listings.
+            Please log in to your StudyNook account to manage and view your room
+            listings.
           </p>
         </div>
         <Link
@@ -77,7 +87,9 @@ const MyListings = async () => {
             My Room Listings
           </h1>
           <p className="text-xs sm:text-sm text-muted-foreground mt-1">
-            Manage your {myListings.length} {myListings.length === 1 ? "listing" : "listings"} and track bookings.
+            Manage your {myListings.length}{" "}
+            {myListings.length === 1 ? "listing" : "listings"} and track
+            bookings.
           </p>
         </div>
 
@@ -107,7 +119,8 @@ const MyListings = async () => {
               You haven&apos;t listed any rooms yet
             </h2>
             <p className="text-xs sm:text-sm text-muted-foreground mt-1">
-              List your library room or study corner to share with fellow students and earn.
+              List your library room or study corner to share with fellow
+              students and earn.
             </p>
           </div>
           <Link

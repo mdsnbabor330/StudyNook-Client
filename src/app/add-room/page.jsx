@@ -57,6 +57,9 @@ const AddRoom = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const { data: tokenData } = await authClient.token();
+
     const formData = new FormData(e.currentTarget);
     const addRoomData = {
       ...Object.fromEntries(formData.entries()),
@@ -72,13 +75,17 @@ const AddRoom = () => {
 
     try {
       setIsSubmitting(true);
-      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/my-listings`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/my-listings`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${tokenData?.token}`,
+          },
+          body: JSON.stringify(addRoomData),
         },
-        body: JSON.stringify(addRoomData),
-      });
+      );
 
       const data = await res.json();
 

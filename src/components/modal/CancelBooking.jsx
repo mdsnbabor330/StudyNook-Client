@@ -4,18 +4,24 @@ import { AlertDialog, Button } from "@heroui/react";
 import { MdOutlineCancel } from "react-icons/md";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import { authClient } from "@/lib/auth-client";
 
 const CancelBooking = ({ bookingRoom, onCancel }) => {
   const { _id, roomName, date, startTime, endTime } = bookingRoom;
   const [isCancelling, setIsCancelling] = useState(false);
 
   const handleCancel = async () => {
+
+         const { data: tokenData } = await authClient.token();
+
+
     try {
       setIsCancelling(true);
       const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/my-bookings/${_id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
+          authorization: `Bearer ${tokenData?.token}`,
         },
         body: JSON.stringify({ status: "Cancelled" }),
       });

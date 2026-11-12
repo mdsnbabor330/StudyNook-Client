@@ -15,6 +15,7 @@ import Loading from "@/app/loading";
 import { HiOutlineArrowLeft } from "react-icons/hi";
 import { IoIosArrowDown } from "react-icons/io";
 import { toast } from "react-toastify";
+import { authClient } from "@/lib/auth-client";
 
 const floors = [
   { id: "Ground Floor", name: "Ground Floor" },
@@ -100,6 +101,9 @@ export default function EditRoomPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const { data: tokenData } = await authClient.token();
+
     const formData = new FormData(e.currentTarget);
 
     const updatedRoomData = {
@@ -120,6 +124,7 @@ export default function EditRoomPage() {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
+             authorization: `Bearer ${tokenData?.token}`,
           },
           body: JSON.stringify(updatedRoomData),
         },

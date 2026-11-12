@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { AlertDialog, Button } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -14,13 +15,17 @@ const DeleteBooking = ({ _id, bookingRoom }) => {
   const [isDeleting, setIsDeleting] = useState(false);
 
   const handleDeleteBooking = async () => {
+    const { data: tokenData } = await authClient.token();
+
     try {
       setIsDeleting(true);
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_SERVER_URL}/my-bookings/${_id}`,
         {
           method: "DELETE",
-          next: { revalidate: 60 },
+          headers: {
+            authorization: `Bearer ${tokenData?.token}`,
+          },
         },
       );
 

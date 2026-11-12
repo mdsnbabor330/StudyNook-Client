@@ -90,6 +90,9 @@ const BookingModal = ({ room }) => {
   const handleBooking = async (e) => {
     e.preventDefault();
 
+         const { data: tokenData } = await authClient.token();
+
+
     if (!user) {
       toast.error("Please log in to complete your booking.");
       return;
@@ -147,6 +150,7 @@ const BookingModal = ({ room }) => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+             authorization: `Bearer ${tokenData?.token}`,
           },
           body: JSON.stringify(bookingData),
         },

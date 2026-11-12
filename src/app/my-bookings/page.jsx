@@ -13,6 +13,12 @@ export const metadata = {
 
 const MyBookings = async () => {
   await connection();
+
+  const token = await auth.api.getToken({
+    headers: await headers(),
+  });
+  console.log(token);
+
   let user = [];
   try {
     const session = await auth.api.getSession({
@@ -31,6 +37,9 @@ const MyBookings = async () => {
       `${process.env.NEXT_PUBLIC_SERVER_URL}/my-bookings`,
       {
         cache: "no-store",
+        headers: {
+          Authorization: `Bearer ${token?.token}`,
+        },
       },
     );
     if (res.ok) {

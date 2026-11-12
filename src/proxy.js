@@ -3,7 +3,7 @@ dns.setServers(['8.8.8.8','8.8.4.4']);
 
 import { NextResponse } from 'next/server'
 import { headers } from 'next/headers';
-import { auth } from './auth';
+import { auth } from './lib/auth';
 
  
 // This function can be marked `async` if using `await` inside
