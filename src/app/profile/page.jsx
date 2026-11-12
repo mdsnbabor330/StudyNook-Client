@@ -5,6 +5,7 @@ import Link from "next/link";
 import React from "react";
 import { FaUserCircle, FaCheckCircle } from "react-icons/fa";
 import { FiBookOpen, FiBookmark, FiArrowRight } from "react-icons/fi";
+import { connection } from "next/server";
 
 export const metadata = {
   title: "StudyNook - User Profile",
@@ -13,6 +14,7 @@ export const metadata = {
 };
 
 const ProfilePage = async () => {
+  await connection();
   let user = null;
   try {
     const session = await auth.api.getSession({

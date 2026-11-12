@@ -6,14 +6,21 @@ import Link from "next/link";
 import React, { Suspense } from "react";
 import { FaEdit } from "react-icons/fa";
 import { HiOutlineArrowLeft } from "react-icons/hi";
+import { connection } from "next/server";
 
 const RoomDetails = async ({ params }) => {
+  await connection();
   const { id } = await params;
   let room = [];
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-  const user = session?.user;
+  let user = null;
+  try {
+    const session = await auth.api.getSession({
+      headers: await headers(),
+    });
+    user = session?.user ?? null;
+  } catch {
+    // not logged in — that's fine for public room page
+  }
 
   try {
     const res = await fetch(

@@ -1,4 +1,5 @@
 import RoomsClient from "@/components/roomClient/RoomsClient";
+import { connection } from "next/server";
 
 
 export const metadata = {
@@ -8,6 +9,7 @@ export const metadata = {
 };
 
 const Rooms=async () => {
+  await connection();
   let initialRooms = [];
 
   try {

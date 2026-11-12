@@ -2,8 +2,6 @@
 @import "@heroui/styles";
 @plugin "daisyui";
 
-
-
 /* Theme */
 @theme inline {
   --color-background: var(--background);
