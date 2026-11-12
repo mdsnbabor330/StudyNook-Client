@@ -101,10 +101,9 @@ export default function EditRoomPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const formData = new FormData(e.currentTarget);
 
     const { data: tokenData } = await authClient.token();
-
-    const formData = new FormData(e.currentTarget);
 
     const updatedRoomData = {
       roomName: formData.get("roomName")?.toString().trim(),

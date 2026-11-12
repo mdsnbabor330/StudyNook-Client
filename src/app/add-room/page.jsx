@@ -57,10 +57,10 @@ const AddRoom = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const formData = new FormData(e.currentTarget);
 
     const { data: tokenData } = await authClient.token();
 
-    const formData = new FormData(e.currentTarget);
     const addRoomData = {
       ...Object.fromEntries(formData.entries()),
       floor: selectedFloor || formData.get("floor") || "1st Floor",

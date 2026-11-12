@@ -89,8 +89,10 @@ const BookingModal = ({ room }) => {
 
   const handleBooking = async (e) => {
     e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
 
-         const { data: tokenData } = await authClient.token();
+    const { data: tokenData } = await authClient.token();
 
 
     if (!user) {
@@ -123,7 +125,6 @@ const BookingModal = ({ room }) => {
       return;
     }
 
-    const formData = new FormData(e.currentTarget);
     const message = formData.get("message")?.toString().trim() || "";
 
     const bookingData = {
