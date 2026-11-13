@@ -36,6 +36,7 @@ const MyListings = async () => {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/my-listing`,
       {
+        cache: "no-store",
         headers: {
           Authorization: `Bearer ${tokenData?.token}`,
         },

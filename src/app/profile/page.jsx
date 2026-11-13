@@ -17,29 +17,43 @@ export const metadata = {
 
 const ProfilePage = async () => {
   await connection();
-  let user = null;
-  try {
-    const session = await auth.api.getSession({
-      headers: await headers(),
-    });
-    user = session?.user;
-  } catch (err) {
-    console.error("Session error:", err);
-  }
+  const reqHeaders = await headers();
+
+  const session = await auth.api.getSession({ headers: reqHeaders });
+  const token = await auth.api.getToken({ headers: reqHeaders });
+  const user = session?.user;
 
   let listingsCount = 0;
   let bookingsCount = 0;
 
   if (user?.id) {
     try {
-      const roomsRes = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/my-listing`);
-      const bookingsRes = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/my-bookings`);
+      const roomsRes = await fetch(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/rooms`,
+        { cache: "no-store" }
+      );
+      const bookingsRes = await fetch(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/my-bookings`,
+        {
+          cache: "no-store",
+          headers: {
+            Authorization: `Bearer ${token?.token}`,
+          },
+        }
+      );
 
       const rooms = await roomsRes.json();
       const bookings = await bookingsRes.json();
 
-      listingsCount = rooms.filter((r) => r.userId === user.id).length;
-      bookingsCount = bookings.filter((b) => b.userId === user.id).length;
+      const listings = Array.isArray(rooms)
+        ? rooms.filter((room) => room.userId === user.id)
+        : [];
+      const userBookings = Array.isArray(bookings)
+        ? bookings.filter((booking) => booking.userId === user.id)
+        : [];
+
+      listingsCount = listings.length;
+      bookingsCount = userBookings.length;
     } catch (error) {
       console.error("Error fetching user stats:", error);
     }
@@ -55,7 +69,7 @@ const ProfilePage = async () => {
           You must be logged in to view your profile dashboard.
         </p>
         <Link
-          href="/login"
+          href="/signin"
           className="inline-block px-6 py-3 rounded-xl bg-primary text-primary-foreground font-semibold text-sm hover:bg-primary/90 transition-colors"
         >
           Sign In
@@ -103,7 +117,6 @@ const ProfilePage = async () => {
         </div>
       </div>
 
-      
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
         <div className="bg-card border border-border rounded-2xl p-6 shadow-xs flex items-center justify-between">
           <div>

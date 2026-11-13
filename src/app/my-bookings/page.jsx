@@ -70,7 +70,7 @@ const MyBookings = async () => {
           </p>
         </div>
         <Link
-          href="/login"
+          href="/signin"
           className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground font-semibold text-sm hover:bg-primary/90 transition-colors shadow-sm"
         >
           Sign In

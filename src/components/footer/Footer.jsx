@@ -154,7 +154,7 @@ function Footer() {
                 <>
                   <li>
                     <Link
-                      href="/login"
+                      href="/signin"
                       className="hover:text-primary transition-colors"
                     >
                       Sign In
@@ -163,7 +163,7 @@ function Footer() {
 
                   <li>
                     <Link
-                      href="/signup"
+                      href="/register"
                       className="hover:text-primary transition-colors"
                     >
                       Create Account

@@ -11,13 +11,13 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
   },
+  baseURL: process.env.NEXT_PUBLIC_BETTER_AUTH_URL,
   socialProviders: {
     google: {
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     },
   },
-
   session: {
     cookieCache: {
       enabled: true,

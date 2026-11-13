@@ -19,17 +19,15 @@ const RoomDetails = async ({ params }) => {
     const session = await auth.api.getSession({
       headers: await headers(),
     });
-    user = session?.user ?? null;
+    user = session?.user;
+
   } catch {
     // not logged in — that's fine for public room page
   }
 
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/${id}`,
-      {
-        cache: "no-store",
-      },
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/${id}`
     );
     if (res.ok) {
       room = await res.json();
@@ -51,7 +49,7 @@ const RoomDetails = async ({ params }) => {
             <span>Back to All Rooms</span>
           </Link>
 
-          {user.id === room?.userId && (
+          {user?.id === room?.userId && (
             <div className="flex items-center gap-2">
               <Link
                 href={`/edit-room/${id}`}

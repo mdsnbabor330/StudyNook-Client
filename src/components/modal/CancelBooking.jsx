@@ -19,6 +19,7 @@ const CancelBooking = ({ bookingRoom, onCancel }) => {
       setIsCancelling(true);
       const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/my-bookings/${_id}`, {
         method: "PATCH",
+        cache: "no-store",
         headers: {
           "Content-Type": "application/json",
           authorization: `Bearer ${tokenData?.token}`,

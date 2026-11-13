@@ -8,7 +8,7 @@ let rooms = [];
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_SERVER_URL}/explore-rooms`,
       {
-        next: { revalidate: 60 },
+        next: { revalidate: 10 },
       },
     );
     if (res.ok) {

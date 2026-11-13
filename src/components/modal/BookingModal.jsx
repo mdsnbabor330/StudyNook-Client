@@ -149,6 +149,7 @@ const BookingModal = ({ room }) => {
         `${process.env.NEXT_PUBLIC_SERVER_URL}/my-bookings`,
         {
           method: "POST",
+          cache: "no-store",
           headers: {
             "Content-Type": "application/json",
              authorization: `Bearer ${tokenData?.token}`,

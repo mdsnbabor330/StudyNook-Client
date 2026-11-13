@@ -23,6 +23,7 @@ const DeleteBooking = ({ _id, bookingRoom }) => {
         `${process.env.NEXT_PUBLIC_SERVER_URL}/my-bookings/${_id}`,
         {
           method: "DELETE",
+          cache: "no-store",
           headers: {
             authorization: `Bearer ${tokenData?.token}`,
           },

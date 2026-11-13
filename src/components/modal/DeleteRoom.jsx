@@ -22,7 +22,7 @@ const DeleteRoom = ({ _id, room }) => {
         `${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/${_id}`,
         {
           method: "DELETE",
-          next: { revalidate: 60 },
+          cache: "no-store",
           headers: {
             authorization: `Bearer ${tokenData?.token}`,
           },

@@ -95,7 +95,7 @@ export default function RoomsClient({ initialRooms = [] }) {
       <div className="w-full grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
         {filteredRooms.length > 0 ? (
           filteredRooms.map((room) => (
-            <AnimatedCard key={room._id} room={room} />
+            <AnimatedCard key={room._id} room={room}/>
           ))
         ) : (
           <div className="col-span-full mx-auto max-w-280 rounded-2xl border border-border bg-card p-8 sm:p-10 text-center shadow-xs space-y-4">

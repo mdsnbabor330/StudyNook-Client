@@ -153,7 +153,7 @@ const RoomDetailsCard = ({ room }) => {
           <BookingModal room={room} />
         ) : (
           <Link
-            href="/login"
+            href="/signin"
             className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-4 px-6 text-sm sm:text-base font-bold text-primary-foreground hover:bg-primary/90 transition-all shadow-md active:scale-[0.99]"
           >
             <IoBookmarks />
